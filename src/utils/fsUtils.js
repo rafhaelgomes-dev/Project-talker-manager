@@ -11,4 +11,17 @@ const returnAllToSpeakers = async () => {
   }
 };
 
-module.exports = {returnAllToSpeakers};
+const returnsSpeakerId = async (id) => { 
+  try {
+    const data = await fs.readFile(path.resolve(__dirname, '../talker.json'));
+    const dataId = data.filter((talker) => talker.id = Number(id));
+    return dataId;
+  } catch(error) {
+    return error;
+  }
+};
+
+module.exports = {
+  returnAllToSpeakers,
+  returnsSpeakerId
+};
