@@ -14,14 +14,15 @@ const returnAllToSpeakers = async () => {
 const returnsSpeakerId = async (id) => { 
   try {
     const data = await fs.readFile(path.resolve(__dirname, '../talker.json'));
-    const dataId = data.filter((talker) => talker.id = Number(id));
-    return dataId;
-  } catch(error) {
+    const talkers = JSON.parse(data);
+    const talkersId = talkers.filter((talker) => talker.id === Number(id));
+    return talkersId;
+  } catch (error) {
     return error;
   }
 };
 
 module.exports = {
   returnAllToSpeakers,
-  returnsSpeakerId
+  returnsSpeakerId,
 };
