@@ -2,9 +2,9 @@ const express = require('express');
 const fsUtils = require('../utils/fsUtils');
 const { validateId } = require('../middlewares/validateTalkers');
 
-const router = express.Router();
+const talkerRouter = express.Router();
 
-router.get('/', async (req, res) => {
+talkerRouter.get('/', async (req, res) => {
   const talker = await fsUtils.returnAllToSpeakers();
   if (talker.length === 0) {
     return res.status(200).send([]);
@@ -12,7 +12,7 @@ router.get('/', async (req, res) => {
   res.status(200).json(talker);
 });
 
-router.get('/:id', validateId, async (req, res) => {
+talkerRouter.get('/:id', validateId, async (req, res) => {
   const { id } = req.params;
   const talker = await fsUtils.returnsSpeakerId(id);
   if (talker.length === 0) {
@@ -21,4 +21,4 @@ router.get('/:id', validateId, async (req, res) => {
   res.status(200).json(talker[0]);
 });
 
-module.exports = router;
+module.exports = talkerRouter;

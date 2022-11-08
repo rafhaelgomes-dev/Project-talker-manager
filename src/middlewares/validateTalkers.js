@@ -1,4 +1,3 @@
-// teste
 const validateId = (req, res, next) => {
   const { id } = req.params;
   const idAsNumber = Number(id);
