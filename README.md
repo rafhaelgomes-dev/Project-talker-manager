@@ -464,7 +464,7 @@ Os campos recebidos pela requisição devem ser validados e, caso os valores sej
     }
     ```
 
-- O campo `age` deverá ser um inteiro e apenas pessoas maiores de idade (pelo menos `18 anos`) podem ser cadastrados. Ele é obrigatório.
+- O campo `age` deverá ser um inteiro e apenas pessoas maiores de idade (pelo menos `18 anos`) podem ser cadastradas. Ele é obrigatório.
 
   - Caso o campo não seja passado ou esteja vazio retorne um código de `status 400`, com o seguinte corpo:
 
@@ -609,7 +609,7 @@ Os campos recebidos pela requisição devem ser validados e, caso os valores sej
       }
       ```
 
-  - O campo `age` deverá ser um inteiro e apenas pessoas maiores de idade (pelo menos `18 anos`) podem ser cadastrados. Ele é obrigatório.
+  - O campo `age` deverá ser um inteiro e apenas pessoas maiores de idade (pelo menos `18 anos`) podem ser cadastradas. Ele é obrigatório.
 
     - Caso o campo não seja passado ou esteja vazio retorne um código de `status 400`, com o seguinte corpo:
 
