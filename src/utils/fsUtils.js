@@ -22,7 +22,18 @@ const returnsSpeakerId = async (id) => {
   }
 };
 
+const writingData = async (obj) => {
+  try {
+    const string = JSON.stringify(obj);
+    await fs.writeFile(path.resolve(__dirname, '../talker.json'), string);
+    return obj;
+  } catch (error) {
+    return error;
+  }
+};
+
 module.exports = {
   returnAllToSpeakers,
   returnsSpeakerId,
+  writingData,
 };
