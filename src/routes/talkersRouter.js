@@ -7,6 +7,9 @@ const {
   validateCamposTalk,
   validateCamposRate, 
   validateCampos,
+  validateCamposRatePut,
+  validateCamposRatePut2,
+  validateCamposRatePut3,
 } = require('../middlewares/validateTalkers');
 
 const talkerRouter = express.Router();
@@ -46,6 +49,29 @@ async (req, res) => {
   const add = [...talkerRead, data];
   await fsUtils.writingData(add);
   res.status(201).json(data);
+});
+
+talkerRouter.put('/:id',
+validateToken,
+validateCamposTalk,
+validateCamposRatePut3,
+validateCamposRatePut2,
+validateCamposRatePut,
+validateCampos,
+async (req, res) => {
+  const { name, age, talk } = req.body;
+  const { id } = req.params;
+  const idNumber = Number(id);
+  const talkerRead = await fsUtils.returnAllToSpeakers();
+  const data = {
+    id: idNumber,
+    name,
+    age,
+    talk,
+  };
+  talkerRead[idNumber - 1] = data;
+  await fsUtils.writingData(talkerRead);
+  res.status(200).json(data);
 });
 
 module.exports = talkerRouter;

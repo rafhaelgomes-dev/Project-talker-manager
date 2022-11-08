@@ -79,10 +79,45 @@ const validateCamposRate = (req, res, next) => {
   next();
 };
 
+const validateCamposRatePut = (req, res, next) => {
+  const { talk } = req.body;
+  const { rate } = talk;
+
+  if (!Number.isInteger(rate) || Number(rate) > 5 || Number(rate) < 1) {
+    return res.status(400).send({ message: 'O campo "rate" deve ser um inteiro de 1 à 5' });
+  }
+
+  next();
+};
+
+const validateCamposRatePut3 = (req, res, next) => {
+  const { talk } = req.body;
+  const { rate } = talk;
+
+  if (Number(rate) < 1) {
+    return res.status(400).send({ message: 'O campo "rate" deve ser um inteiro de 1 à 5' });
+  }
+
+  next();
+};
+
+const validateCamposRatePut2 = (req, res, next) => {
+  const { talk } = req.body;
+  const { rate } = talk;
+  if (!rate) {
+    return res.status(400).send({ message: 'O campo "rate" é obrigatório' });
+  }
+
+  next();
+};
+
 module.exports = {
   validateId,
   validateToken,
   validateCampos,
   validateCamposRate,
   validateCamposTalk,
+  validateCamposRatePut,
+  validateCamposRatePut2,
+  validateCamposRatePut3,
 };
