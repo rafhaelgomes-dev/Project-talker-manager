@@ -74,4 +74,14 @@ async (req, res) => {
   res.status(200).json(data);
 });
 
+talkerRouter.delete('/:id',
+validateToken,
+async (req, res) => {
+  const { id } = req.params;
+  const idNumber = Number(id);
+  const talkerRead = await fsUtils.returnAllToSpeakers();
+  const deleteFilter = talkerRead.filter((e) => e.id !== idNumber);
+  await fsUtils.writingData(deleteFilter);
+  res.status(204).json();
+});
 module.exports = talkerRouter;
