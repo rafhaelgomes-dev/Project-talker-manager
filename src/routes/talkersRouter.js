@@ -84,4 +84,5 @@ async (req, res) => {
   await fsUtils.writingData(deleteFilter);
   res.status(204).json();
 });
+
 module.exports = talkerRouter;
